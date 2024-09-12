@@ -5,8 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:APIRover"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        
+        xmlns:TitleBar="clr-namespace:APIRover.UIComponents.TitleBar"
+        xmlns:History="clr-namespace:APIRover.UIComponents.History"
+        xmlns:WorkingArea="clr-namespace:APIRover.UIComponents.WorkingArea"
+        
+        Title="API Rover" Height="720" Width="1280"
+        UseLayoutRounding="True"
+        WindowStyle="None">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!--Title Bar-->
+        <TitleBar:TitleBarUC x:Name="TitleBar" Grid.Row="0" Background="LightGreen"/>
 
+        <!--Client Area-->
+        <Grid Grid.Row="1" Name="ClientArea">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250" MinWidth="200" MaxWidth="300"/>
+                <ColumnDefinition Name="GridSplitterColDef" Width="5"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--History-->
+            <History:HistoryUC x:Name="HistoryArea" Grid.Column="0" Background="Bisque"/>
+            <!--Moveable Splitter-->
+            <GridSplitter Name="ClientAreaGridSplitter" Grid.Column="1"
+                          Width="{Binding ElementName=GridSplitterColDef, Path=Width.Value}"
+                          HorizontalAlignment="Center"
+                          ResizeDirection="Columns"
+                          Background="{Binding ElementName=HistoryArea, Path=Background}"/>
+            <!--Working area-->
+            <WorkingArea:WorkingAreaUC x:Name="WorkingArea" Grid.Column="2" Background="AliceBlue"/>
+        </Grid>
     </Grid>
 </Window>

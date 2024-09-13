@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace APIRover;
+namespace APIRover.Views;
 
 public partial class MainWindow : Window
 {

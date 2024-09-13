@@ -2,6 +2,8 @@
 using APIRover.Views;
 using Microsoft.Extensions.Hosting;
 using System.Windows;
+using APIRover.ViewModels;
+using APIRover.Models;
 
 namespace APIRover;
 
@@ -14,7 +16,9 @@ public partial class App : Application
         AppHost = Host.CreateDefaultBuilder()
             .ConfigureServices(services =>
             {
-                services.AddSingleton<MainWindow>();
+                services.AddSingleton<MainWindowView>();
+                services.AddSingleton<MainWindowViewModel>();
+                services.AddSingleton<MainWindowModel>();
             })
             .Build();
     }
@@ -23,7 +27,7 @@ public partial class App : Application
     {
         await AppHost!.StartAsync();
         
-        var mainWindow = AppHost.Services.GetRequiredService<MainWindow>();
+        var mainWindow = AppHost.Services.GetRequiredService<MainWindowView>();
         mainWindow.Show();
 
         base.OnStartup(e);

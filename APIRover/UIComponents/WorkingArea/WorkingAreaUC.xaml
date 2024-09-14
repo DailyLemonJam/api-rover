@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="0.5*"/>
             <RowDefinition Name="GridSplitterRowDef" Height="5"/>
             <RowDefinition Height="0.5*"/>
@@ -63,8 +63,17 @@
                     <Button Grid.Column="2" Content="Send"/>
                 </Grid>
                 <!--Other Info-->
-                <Grid Grid.Row="1">
-                    
+                <Grid Grid.Row="1" Background="LightCyan">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" Orientation="Horizontal">
+                        <Button Content="Params" Width="50"/>
+                    </StackPanel>
+
+                    <Frame Grid.Row="1" NavigationUIVisibility="Hidden"/>
                 </Grid>
             </Grid>
         </ScrollViewer>
@@ -79,7 +88,19 @@
                       HorizontalScrollBarVisibility="Disabled"
                       VerticalScrollBarVisibility="Auto">
             <Grid Background="LightBlue">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!--Select Response Output Type (body, headers)-->
+                <StackPanel Grid.Row="0" Orientation="Horizontal">
+                    <Button Content="Body" Width="50"/>
+                    <Button Content="Headers" Width="50"/>
+                </StackPanel>
                 
+                <!--Pages with details??? (Content)-->
+                <Frame Grid.Row="1" NavigationUIVisibility="Hidden"/>
             </Grid>
         </ScrollViewer>
     </Grid>

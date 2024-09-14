@@ -7,6 +7,80 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Name="GridSplitterRowDef" Height="5"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+        
+        <!--Requests List-->
+        <Grid Grid.Row="0" Background="Khaki">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Content="+"/>
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <ItemsControl>
+                    <!--Bind ItemsSource-->
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <!--What to show-->
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </Grid>
+
+        <!--Request Info-->
+        <ScrollViewer Grid.Row="1"
+                      HorizontalScrollBarVisibility="Disabled"
+                      VerticalScrollBarVisibility="Auto">
+            <Grid Background="Azure">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!--Method, URL & Send-->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="80"/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox Grid.Column="0" SelectedIndex="0" Width="70"
+                              VerticalContentAlignment="Center">
+                        <!--TODO Change to ItemsSource + Default value-->
+                        <Label Content="GET"/>
+                        <Label Content="POST"/>
+                        <Label Content="PUT"/>
+                        <Label Content="DELETE"/>
+                    </ComboBox>
+                    <TextBox Grid.Column="1" VerticalContentAlignment="Center" FontSize="24"/>
+                    <Button Grid.Column="2" Content="Send"/>
+                </Grid>
+                <!--Other Info-->
+                <Grid Grid.Row="1">
+                    
+                </Grid>
+            </Grid>
+        </ScrollViewer>
+        
+        <!--Request / Response Splitter-->
+        <GridSplitter Grid.Row="2" HorizontalAlignment="Stretch"
+                      ResizeDirection="Rows" 
+                      Height="{Binding ElementName=GridSplitterRowDef, Path=Height.Value}"/>
+
+        <!--Response Info-->
+        <ScrollViewer Grid.Row="3" 
+                      HorizontalScrollBarVisibility="Disabled"
+                      VerticalScrollBarVisibility="Auto">
+            <Grid Background="LightBlue">
+                
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </UserControl>

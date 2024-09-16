@@ -1,0 +1,57 @@
+﻿<Page x:Class="APIRover.UIComponents.WorkingArea.ContentArea.ContentPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:APIRover.UIComponents.WorkingArea.ContentArea"
+      xmlns:vm="clr-namespace:APIRover.ViewModels"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      d:DataContext="{d:DesignInstance vm:MainWindowViewModel}"
+      Title="ContentPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Name="GridSplitterRowDef" Height="5"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+
+        <!--Method, URL & Send-->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="80"/>
+            </Grid.ColumnDefinitions>
+            <ComboBox Name="HttpMethodCB" Grid.Column="0" Width="70"
+                      VerticalContentAlignment="Center">
+            </ComboBox>
+            <TextBox Grid.Column="1" VerticalContentAlignment="Center" FontSize="24"/>
+            <Button Grid.Column="2" Content="Send" 
+                    Command="{Binding SendHttpRequestCommand}"/>
+        </Grid>
+
+        <!--Request params-->
+        <ScrollViewer Grid.Row="1" 
+                      HorizontalScrollBarVisibility="Disabled"
+                      VerticalScrollBarVisibility="Auto"
+                      Background="LightGreen">
+        </ScrollViewer>
+
+        <!--Splitter-->
+        <GridSplitter Grid.Row="2" HorizontalAlignment="Stretch"
+                      ResizeDirection="Rows" 
+                      Height="{Binding ElementName=GridSplitterRowDef, Path=Height.Value}"/>
+
+        <!--Response output-->
+        <ScrollViewer Grid.Row="3" 
+                      HorizontalScrollBarVisibility="Disabled"
+                      VerticalScrollBarVisibility="Auto" 
+                      Background="LightBlue">
+        </ScrollViewer>
+
+    </Grid>
+    
+</Page>

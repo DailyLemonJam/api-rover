@@ -1,6 +1,6 @@
 ﻿namespace APIRover.Enums;
 
-public enum HttpMethod
+public enum HttpMethodType
 {
     GET,
     POST,

@@ -54,13 +54,8 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="80"/>
                     </Grid.ColumnDefinitions>
-                    <ComboBox Grid.Column="0" SelectedIndex="0" Width="70"
+                    <ComboBox Name="HttpMethodCB" Grid.Column="0" Width="70"
                               VerticalContentAlignment="Center">
-                        <!--TODO Change to ItemsSource + Default value-->
-                        <Label Content="GET"/>
-                        <Label Content="POST"/>
-                        <Label Content="PUT"/>
-                        <Label Content="DELETE"/>
                     </ComboBox>
                     <TextBox Grid.Column="1" VerticalContentAlignment="Center" FontSize="24"/>
                     <Button Grid.Column="2" Content="Send" 

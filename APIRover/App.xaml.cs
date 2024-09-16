@@ -4,6 +4,7 @@ using Microsoft.Extensions.Hosting;
 using System.Windows;
 using APIRover.ViewModels;
 using APIRover.Models;
+using APIRover.Services.HttpService;
 
 namespace APIRover;
 
@@ -19,6 +20,8 @@ public partial class App : Application
                 services.AddSingleton<MainWindowView>();
                 services.AddSingleton<MainWindowViewModel>();
                 services.AddSingleton<MainWindowModel>();
+
+                services.AddTransient<IHttpService, HttpService>();
             })
             .Build();
     }

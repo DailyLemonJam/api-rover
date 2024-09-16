@@ -8,6 +8,14 @@ public partial class WorkingAreaUC : UserControl
     public WorkingAreaUC()
     {
         InitializeComponent();
-        FrameContentArea.Content = new ContentPage();
+        Loaded += (s, e) =>
+        {
+            // TODO load page info from Requests List (in ViewModel??)
+            var page = new ContentPage
+            {
+                DataContext = ThisUC.DataContext
+            };
+            FrameContentArea.Content = page;
+        };
     }
 }

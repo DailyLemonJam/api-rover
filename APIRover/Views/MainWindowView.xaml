@@ -30,8 +30,7 @@
             <GridSplitter Name="ClientAreaGridSplitter" Grid.Column="1"
                           Width="{Binding ElementName=GridSplitterColDef, Path=Width.Value}"
                           HorizontalAlignment="Center"
-                          ResizeDirection="Columns"
-                          Background="{Binding ElementName=HistoryArea, Path=Background}"/>
+                          ResizeDirection="Columns"/>
             <!--Working area-->
             <WorkingArea:WorkingAreaUC x:Name="WorkingArea" Grid.Column="2" Background="AliceBlue"/>
         </Grid>

@@ -5,6 +5,8 @@ using System.Windows;
 using APIRover.ViewModels;
 using APIRover.Models;
 using APIRover.Services.HttpService;
+using APIRover.DbContext;
+using Microsoft.EntityFrameworkCore;
 
 namespace APIRover;
 
@@ -14,7 +16,8 @@ public partial class App : Application
 
     public App()
     {
-        AppHost = Host.CreateDefaultBuilder()
+        var builder = Host.CreateDefaultBuilder();
+        AppHost = builder
             .ConfigureServices(services =>
             {
                 services.AddSingleton<MainWindowView>();
@@ -22,6 +25,11 @@ public partial class App : Application
                 services.AddSingleton<MainWindowModel>();
 
                 services.AddTransient<IHttpService, HttpService>();
+
+                services.AddDbContext<ApplicationDbContext>(options =>
+                {
+                    options.UseSqlite(); // TODO Configure connection string
+                });
             })
             .Build();
     }
